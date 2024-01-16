@@ -567,7 +567,7 @@ export default function Home() {
     );
   };
 
-  const handleAnswer = (answer) => {
+  const handleAnswer = (answer: string) => {
     const selectedOptions = questions[currentQuestionIndex].options[answer];
 
     // Update role points
