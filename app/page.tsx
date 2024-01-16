@@ -2,512 +2,526 @@
 
 import React, { useState } from "react";
 
-export default function Home() {
-  const questions = [
-    {
-      statement: "Do you like to listen and ask questions?",
-      options: {
-        Yes: {
-          "Agile & Delivery Leadership": 2,
-          "Product & Requirements Management": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-        },
-      },
-    },
-    {
-      statement: "Are you comfortable with ambiguity?",
-      options: {
-        Yes: {
-          "Agile & Delivery Leadership": 2,
-          "Product & Requirements Management": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Quality Assurance": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Can you facilitate group sessions using techniques to mitigate social biases?",
-      options: {
-        Yes: {
-          "Agile & Delivery Leadership": 2,
-          "Product & Requirements Management": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-          "IT Support & Access Management": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Can you present your findings in a way to make it understandable to your audience?",
-      options: {
-        Yes: {
-          "Product & Requirements Management": 2,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Quality Assurance": 1,
-        },
-      },
-    },
-    {
-      statement: "Are you eager to continually improve your skills?",
-      options: {
-        Yes: {
-          "Agile & Delivery Leadership": 2,
-          "Software Engineer": 1,
-        },
-        No: {
-          "IT Support & Access Management": 1,
-          "Agile & Delivery Leadership": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you have an eye for detail?",
-      options: {
-        Yes: {
-          "Quality Assurance": 2,
-          "User Centered Design": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Agile & Delivery Leadership": 1,
-        },
-      },
-    },
-    {
-      statement: "Are you interested in automating repetitive tasks?",
-      options: {
-        Yes: {
-          "Software Engineer": 2,
-          "Quality Assurance": 1,
-        },
-        No: {
-          "Product & Requirements Management": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Are you interested in knowing about different systems and software companies use?",
-      options: {
-        Yes: {
-          "Software Engineer": 2,
-          "IT Support & Access Management": 1,
-        },
-        No: {
-          "Agile & Delivery Leadership": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Are you good at thinking of the worst case scenario and how to avoid it?",
-      options: {
-        Yes: {
-          "Quality Assurance": 2,
-          "Agile & Delivery Leadership": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Product & Requirements Management": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you like making things work better?",
-      options: {
-        Yes: {
-          "Software Engineer": 2,
-          "Quality Assurance": 1,
-        },
-        No: {
-          "Product & Requirements Management": 1,
-          "Agile & Delivery Leadership": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you have a good feel for user experience?",
-      options: {
-        Yes: {
-          "User Centered Design": 2,
-          "Product & Requirements Management": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Quality Assurance": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you observe things closely and give honest feedback?",
-      options: {
-        Yes: {
-          "Product & Requirements Management": 2,
-          "Quality Assurance": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-        },
-      },
-    },
-    {
-      statement: "Are you curious about how things work and new technologies?",
-      options: {
-        Yes: {
-          "Software Engineer": 2,
-          "User Centered Design": 1,
-        },
-        No: {
-          "IT Support & Access Management": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you always ask 'why'?",
-      options: {
-        Yes: {
-          "Product & Requirements Management": 2,
-        },
-        No: {
-          "Agile & Delivery Leadership": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you like to organize and bring order to things?",
-      options: {
-        Yes: {
-          "Product & Requirements Management": 2,
-          "Agile & Delivery Leadership": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you like to be an expert in specific areas?",
-      options: {
-        Yes: {
-          "Software Engineer": 2,
-          "IT Support & Access Management": 1,
-        },
-        No: {
-          "Agile & Delivery Leadership": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you enjoy interacting with diverse groups of people?",
-      options: {
-        Yes: {
-          "Product & Requirements Management": 2,
-        },
-        No: {
-          "Software Engineer": 1,
-        },
-      },
-    },
-    {
-      statement: "Can you give constructive and positive feedback?",
-      options: {
-        Yes: {
-          "Agile & Delivery Leadership": 2,
-        },
-        No: {
-          "IT Support & Access Management": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you like analyzing data?",
-      options: {
-        Yes: {
-          "Product & Requirements Management": 2,
-          "Quality Assurance": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you think critically, creatively, and enjoy exploring?",
-      options: {
-        Yes: {
-          "User Centered Design": 2,
-          "Software Engineer": 1,
-        },
-        No: {
-          "IT Support & Access Management": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Do you enjoy figuring out solutions and understanding issues?",
-      options: {
-        Yes: {
-          "Software Engineer": 2,
-          "Quality Assurance": 1,
-        },
-        No: {
-          "Product & Requirements Management": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you enjoy helping and teaching others?",
-      options: {
-        Yes: {
-          "Agile & Delivery Leadership": 2,
-        },
-        No: {
-          "Software Engineer": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you think logically and follow processes?",
-      options: {
-        Yes: {
-          "Software Engineer": 2,
-          "IT Support & Access Management": 1,
-        },
-        No: {
-          "User Centered Design": 1,
-        },
-      },
-    },
-    {
-      statement: "Can you identify and recommend improvements?",
-      options: {
-        Yes: {
-          "Quality Assurance": 2,
-          "Product & Requirements Management": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you enjoy collaborating with others?",
-      options: {
-        Yes: {
-          "Agile & Delivery Leadership": 2,
-          "Product & Requirements Management": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you enjoy solving problems and challenges?",
-      options: {
-        Yes: {
-          "Software Engineer": 2,
-          "Quality Assurance": 1,
-        },
-        No: {
-          "Product & Requirements Management": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you enjoy diving deep into new subjects?",
-      options: {
-        Yes: {
-          "Software Engineer": 2,
-          "User Centered Design": 1,
-        },
-        No: {
-          "IT Support & Access Management": 1,
-        },
-      },
-    },
-    {
-      statement: "Are you curious about how popular apps work?",
-      options: {
-        Yes: {
-          "Software Engineer": 2,
-          "Quality Assurance": 1,
-        },
-        No: {
-          "Agile & Delivery Leadership": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you enjoy setting and achieving milestones in a project?",
-      options: {
-        Yes: {
-          "Agile & Delivery Leadership": 2,
-          "Product & Requirements Management": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-          "IT Support & Access Management": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Do you have a knack for understanding user needs and designing solutions around them?",
-      options: {
-        Yes: {
-          "User Centered Design": 2,
-          "Product & Requirements Management": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Quality Assurance": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Do you enjoy ensuring that IT systems are up and running smoothly?",
-      options: {
-        Yes: {
-          "IT Support & Access Management": 2,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Agile & Delivery Leadership": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Are you interested in managing user identities and access rights?",
-      options: {
-        Yes: {
-          "IT Support & Access Management": 2,
-        },
-        No: {
-          "Software Engineer": 1,
-          "User Centered Design": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Do you like to ensure that software releases meet quality standards?",
-      options: {
-        Yes: {
-          "Quality Assurance": 2,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Agile & Delivery Leadership": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Do you enjoy facilitating workshops and brainstorming sessions?",
-      options: {
-        Yes: {
-          "Agile & Delivery Leadership": 2,
-          "Product & Requirements Management": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Quality Assurance": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you like to keep up with the latest technological trends?",
-      options: {
-        Yes: {
-          "Software Engineer": 2,
-          "User Centered Design": 1,
-        },
-        No: {
-          "IT Support & Access Management": 1,
-          "Agile & Delivery Leadership": 1,
-        },
-      },
-    },
-    {
-      statement: "Are you good at managing and mitigating risks?",
-      options: {
-        Yes: {
-          "Agile & Delivery Leadership": 2,
-          "Quality Assurance": 1,
-        },
-        No: {
-          "Software Engineer": 1,
-          "User Centered Design": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Do you enjoy understanding and mapping out business processes?",
-      options: {
-        Yes: {
-          "Product & Requirements Management": 2,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Quality Assurance": 1,
-        },
-      },
-    },
-    {
-      statement:
-        "Do you like to ensure that users have the right permissions to access specific resources?",
-      options: {
-        Yes: {
-          "IT Support & Access Management": 2,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Agile & Delivery Leadership": 1,
-        },
-      },
-    },
-    {
-      statement: "Are you interested in creating user-friendly interfaces?",
-      options: {
-        Yes: {
-          "User Centered Design": 2,
-        },
-        No: {
-          "Software Engineer": 1,
-          "Quality Assurance": 1,
-        },
-      },
-    },
-    {
-      statement: "Do you enjoy coordinating and managing project deliveries?",
-      options: {
-        Yes: {
-          "Agile & Delivery Leadership": 2,
-        },
-        No: {
-          "Software Engineer": 1,
-          "IT Support & Access Management": 1,
-        },
-      },
-    },
-  ];
+interface Option {
+  [key: string]: number;
+}
 
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [rolePoints, setRolePoints] = useState({
+interface Question {
+  statement: string;
+  options: {
+    Yes: Option;
+    No: Option;
+  };
+}
+
+interface RolePoints {
+  [role: string]: number;
+}
+
+const questions: Question[] = [
+  {
+    statement: "Do you like to listen and ask questions?",
+    options: {
+      Yes: {
+        "Agile & Delivery Leadership": 2,
+        "Product & Requirements Management": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+      },
+    },
+  },
+  {
+    statement: "Are you comfortable with ambiguity?",
+    options: {
+      Yes: {
+        "Agile & Delivery Leadership": 2,
+        "Product & Requirements Management": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Quality Assurance": 1,
+      },
+    },
+  },
+  {
+    statement:
+      "Can you facilitate group sessions using techniques to mitigate social biases?",
+    options: {
+      Yes: {
+        "Agile & Delivery Leadership": 2,
+        "Product & Requirements Management": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+        "IT Support & Access Management": 1,
+      },
+    },
+  },
+  {
+    statement:
+      "Can you present your findings in a way to make it understandable to your audience?",
+    options: {
+      Yes: {
+        "Product & Requirements Management": 2,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Quality Assurance": 1,
+      },
+    },
+  },
+  {
+    statement: "Are you eager to continually improve your skills?",
+    options: {
+      Yes: {
+        "Agile & Delivery Leadership": 2,
+        "Software Engineer": 1,
+      },
+      No: {
+        "IT Support & Access Management": 1,
+        "Agile & Delivery Leadership": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you have an eye for detail?",
+    options: {
+      Yes: {
+        "Quality Assurance": 2,
+        "User Centered Design": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Agile & Delivery Leadership": 1,
+      },
+    },
+  },
+  {
+    statement: "Are you interested in automating repetitive tasks?",
+    options: {
+      Yes: {
+        "Software Engineer": 2,
+        "Quality Assurance": 1,
+      },
+      No: {
+        "Product & Requirements Management": 1,
+      },
+    },
+  },
+  {
+    statement:
+      "Are you interested in knowing about different systems and software companies use?",
+    options: {
+      Yes: {
+        "Software Engineer": 2,
+        "IT Support & Access Management": 1,
+      },
+      No: {
+        "Agile & Delivery Leadership": 1,
+      },
+    },
+  },
+  {
+    statement:
+      "Are you good at thinking of the worst case scenario and how to avoid it?",
+    options: {
+      Yes: {
+        "Quality Assurance": 2,
+        "Agile & Delivery Leadership": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Product & Requirements Management": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you like making things work better?",
+    options: {
+      Yes: {
+        "Software Engineer": 2,
+        "Quality Assurance": 1,
+      },
+      No: {
+        "Product & Requirements Management": 1,
+        "Agile & Delivery Leadership": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you have a good feel for user experience?",
+    options: {
+      Yes: {
+        "User Centered Design": 2,
+        "Product & Requirements Management": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Quality Assurance": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you observe things closely and give honest feedback?",
+    options: {
+      Yes: {
+        "Product & Requirements Management": 2,
+        "Quality Assurance": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+      },
+    },
+  },
+  {
+    statement: "Are you curious about how things work and new technologies?",
+    options: {
+      Yes: {
+        "Software Engineer": 2,
+        "User Centered Design": 1,
+      },
+      No: {
+        "IT Support & Access Management": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you always ask 'why'?",
+    options: {
+      Yes: {
+        "Product & Requirements Management": 2,
+      },
+      No: {
+        "Agile & Delivery Leadership": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you like to organize and bring order to things?",
+    options: {
+      Yes: {
+        "Product & Requirements Management": 2,
+        "Agile & Delivery Leadership": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you like to be an expert in specific areas?",
+    options: {
+      Yes: {
+        "Software Engineer": 2,
+        "IT Support & Access Management": 1,
+      },
+      No: {
+        "Agile & Delivery Leadership": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you enjoy interacting with diverse groups of people?",
+    options: {
+      Yes: {
+        "Product & Requirements Management": 2,
+      },
+      No: {
+        "Software Engineer": 1,
+      },
+    },
+  },
+  {
+    statement: "Can you give constructive and positive feedback?",
+    options: {
+      Yes: {
+        "Agile & Delivery Leadership": 2,
+      },
+      No: {
+        "IT Support & Access Management": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you like analyzing data?",
+    options: {
+      Yes: {
+        "Product & Requirements Management": 2,
+        "Quality Assurance": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you think critically, creatively, and enjoy exploring?",
+    options: {
+      Yes: {
+        "User Centered Design": 2,
+        "Software Engineer": 1,
+      },
+      No: {
+        "IT Support & Access Management": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you enjoy figuring out solutions and understanding issues?",
+    options: {
+      Yes: {
+        "Software Engineer": 2,
+        "Quality Assurance": 1,
+      },
+      No: {
+        "Product & Requirements Management": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you enjoy helping and teaching others?",
+    options: {
+      Yes: {
+        "Agile & Delivery Leadership": 2,
+      },
+      No: {
+        "Software Engineer": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you think logically and follow processes?",
+    options: {
+      Yes: {
+        "Software Engineer": 2,
+        "IT Support & Access Management": 1,
+      },
+      No: {
+        "User Centered Design": 1,
+      },
+    },
+  },
+  {
+    statement: "Can you identify and recommend improvements?",
+    options: {
+      Yes: {
+        "Quality Assurance": 2,
+        "Product & Requirements Management": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you enjoy collaborating with others?",
+    options: {
+      Yes: {
+        "Agile & Delivery Leadership": 2,
+        "Product & Requirements Management": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you enjoy solving problems and challenges?",
+    options: {
+      Yes: {
+        "Software Engineer": 2,
+        "Quality Assurance": 1,
+      },
+      No: {
+        "Product & Requirements Management": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you enjoy diving deep into new subjects?",
+    options: {
+      Yes: {
+        "Software Engineer": 2,
+        "User Centered Design": 1,
+      },
+      No: {
+        "IT Support & Access Management": 1,
+      },
+    },
+  },
+  {
+    statement: "Are you curious about how popular apps work?",
+    options: {
+      Yes: {
+        "Software Engineer": 2,
+        "Quality Assurance": 1,
+      },
+      No: {
+        "Agile & Delivery Leadership": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you enjoy setting and achieving milestones in a project?",
+    options: {
+      Yes: {
+        "Agile & Delivery Leadership": 2,
+        "Product & Requirements Management": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+        "IT Support & Access Management": 1,
+      },
+    },
+  },
+  {
+    statement:
+      "Do you have a knack for understanding user needs and designing solutions around them?",
+    options: {
+      Yes: {
+        "User Centered Design": 2,
+        "Product & Requirements Management": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Quality Assurance": 1,
+      },
+    },
+  },
+  {
+    statement:
+      "Do you enjoy ensuring that IT systems are up and running smoothly?",
+    options: {
+      Yes: {
+        "IT Support & Access Management": 2,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Agile & Delivery Leadership": 1,
+      },
+    },
+  },
+  {
+    statement:
+      "Are you interested in managing user identities and access rights?",
+    options: {
+      Yes: {
+        "IT Support & Access Management": 2,
+      },
+      No: {
+        "Software Engineer": 1,
+        "User Centered Design": 1,
+      },
+    },
+  },
+  {
+    statement:
+      "Do you like to ensure that software releases meet quality standards?",
+    options: {
+      Yes: {
+        "Quality Assurance": 2,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Agile & Delivery Leadership": 1,
+      },
+    },
+  },
+  {
+    statement:
+      "Do you enjoy facilitating workshops and brainstorming sessions?",
+    options: {
+      Yes: {
+        "Agile & Delivery Leadership": 2,
+        "Product & Requirements Management": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Quality Assurance": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you like to keep up with the latest technological trends?",
+    options: {
+      Yes: {
+        "Software Engineer": 2,
+        "User Centered Design": 1,
+      },
+      No: {
+        "IT Support & Access Management": 1,
+        "Agile & Delivery Leadership": 1,
+      },
+    },
+  },
+  {
+    statement: "Are you good at managing and mitigating risks?",
+    options: {
+      Yes: {
+        "Agile & Delivery Leadership": 2,
+        "Quality Assurance": 1,
+      },
+      No: {
+        "Software Engineer": 1,
+        "User Centered Design": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you enjoy understanding and mapping out business processes?",
+    options: {
+      Yes: {
+        "Product & Requirements Management": 2,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Quality Assurance": 1,
+      },
+    },
+  },
+  {
+    statement:
+      "Do you like to ensure that users have the right permissions to access specific resources?",
+    options: {
+      Yes: {
+        "IT Support & Access Management": 2,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Agile & Delivery Leadership": 1,
+      },
+    },
+  },
+  {
+    statement: "Are you interested in creating user-friendly interfaces?",
+    options: {
+      Yes: {
+        "User Centered Design": 2,
+      },
+      No: {
+        "Software Engineer": 1,
+        "Quality Assurance": 1,
+      },
+    },
+  },
+  {
+    statement: "Do you enjoy coordinating and managing project deliveries?",
+    options: {
+      Yes: {
+        "Agile & Delivery Leadership": 2,
+      },
+      No: {
+        "Software Engineer": 1,
+        "IT Support & Access Management": 1,
+      },
+    },
+  },
+];
+
+export default function Home() {
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [rolePoints, setRolePoints] = useState<RolePoints>({
     "Agile & Delivery Leadership": 0,
     "Quality Assurance": 0,
     "Software Engineer": 0,
@@ -517,8 +531,8 @@ export default function Home() {
     // ... other roles ...
   });
 
-  const [showResult, setShowResult] = useState(false);
-  const [finalRole, setFinalRole] = useState("");
+  const [showResult, setShowResult] = useState<boolean>(false);
+  const [finalRole, setFinalRole] = useState<string>("");
 
   const renderProgressBars = () => {
     const totalPoints = questions.length * 2; // Maximum possible points for a role
