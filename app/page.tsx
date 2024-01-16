@@ -534,9 +534,9 @@ export default function Home() {
   const [showResult, setShowResult] = useState<boolean>(false);
   const [finalRole, setFinalRole] = useState<string>("");
 
-  const renderProgressBars = () => {
+  const renderProgressBars = (): JSX.Element[] => {
     const totalPoints = questions.length * 2; // Maximum possible points for a role
-    return Object.keys(rolePoints).map((role) => {
+    return Object.keys(rolePoints).map((role: string) => {
       const percentage = (rolePoints[role] / totalPoints) * 100;
       return (
         <div key={role} className="my-2">
@@ -552,7 +552,7 @@ export default function Home() {
     });
   };
 
-  const renderQuestionProgressBar = () => {
+  const renderQuestionProgressBar = (): JSX.Element => {
     const totalQuestions = questions.length;
     const progressPercentage =
       ((currentQuestionIndex + 1) / totalQuestions) * 100;
@@ -567,8 +567,9 @@ export default function Home() {
     );
   };
 
-  const handleAnswer = (answer: string) => {
-    const selectedOptions = questions[currentQuestionIndex].options[answer];
+  const handleAnswer = (answer: "Yes" | "No") => {
+    const question = questions[currentQuestionIndex];
+    const selectedOptions = question.options[answer] as Option;
 
     // Update role points
     const updatedPoints = { ...rolePoints };
